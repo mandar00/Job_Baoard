@@ -1,11 +1,13 @@
+import { Job } from "@prisma/client";
+
 const { placeholderJobs } = require("./placeholder-data");
 const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prismaClient = new PrismaClient();
 
 async function main() {
   await Promise.all(
-    placeholderJobs.map(async (job) => {
-      await prisma.job.upsert({
+    placeholderJobs.map(async (job:Job) => {
+      await prismaClient.job.upsert({
         where: {
           slug: job.slug,
         },
@@ -17,11 +19,11 @@ async function main() {
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
+  .then(async () => { 
+    await prismaClient.$disconnect();
   })
   .catch(async (e) => {
     console.error("Error while seeding database:", e);
-    await prisma.$disconnect();
+    await prismaClient.$disconnect();
     process.exit(1);
   });

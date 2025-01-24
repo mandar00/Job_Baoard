@@ -1,0 +1,2 @@
+Home page 
+  jobListItem and sidebar should be seperate components it seperatre parallel routes so that they can have thier own loading and error states rather than using error boundary 

@@ -1,0 +1,11 @@
+npx prisma 
+npx prisma init
+
+after creatign scme in schema.prisma 
+npx prisma db push //create a table with this schema
+npm prisma generate // to generate a prisma client for the table just created 
+
+// has to be done every time a schema is created ort updated
+
+npm run seed // push local data to db
+npx prisma studio // open a ui in local for us to view db  
